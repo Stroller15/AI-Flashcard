@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import {
   Container,
   TextField,
@@ -17,13 +18,16 @@ import {
   DialogActions,
 } from '@mui/material'
 import { collection, doc, getDoc, writeBatch } from 'firebase/firestore'
-import { db } from '../firebase' // Adjust the import path as necessary
+import { db } from '../../firebase' // Adjust the import path as necessary
+import { useUser } from '@clerk/nextjs'
 
 export default function Generate() {
+  const {user} = useUser()
   const [text, setText] = useState('')
   const [flashcards, setFlashcards] = useState([])
   const [setName, setSetName] = useState('')
   const [dialogOpen, setDialogOpen] = useState(false)
+  const router = useRouter()
 
   const handleSubmit = async () => {
     // We'll implement the API call here
@@ -60,26 +64,33 @@ export default function Generate() {
     }
 
     try {
+      const batch = writeBatch(db)
       const userDocRef = doc(collection(db, 'users'), user.id)
       const userDocSnap = await getDoc(userDocRef)
 
-      const batch = writeBatch(db)
-
       if (userDocSnap.exists()) {
-        const userData = userDocSnap.data()
-        const updatedSets = [...(userData.flashcardSets || []), { name: setName }]
-        batch.update(userDocRef, { flashcardSets: updatedSets })
+        const collections = userDocSnap.data().flashcards || []
+        if(collections.find((f) => f.name === setName)) {
+          alert('Flashcard collection wih the same name already exists.')
+        } else {
+          collections.push({setName})
+          batch.set(userDocRef, {flashcards: collections}, {merge: true})
+        }
       } else {
-        batch.set(userDocRef, { flashcardSets: [{ name: setName }] })
+        batch.set(userDocRef, { flashcards: [{setName}] })
       }
 
-      const setDocRef = doc(collection(userDocRef, 'flashcardSets'), setName)
-      batch.set(setDocRef, { flashcards })
+      const colRef = collection(userDocRef, setName)
+      flashcards.forEach((flashcard) => {
+        const cardDocRef = doc(colRef)
+        batch.set(cardDocRef, flashcard)
+      })
 
       await batch.commit()
 
       alert('Flashcards saved successfully!')
       handleCloseDialog()
+      router.push('/flashcards')
       setSetName('')
     } catch (error) {
       console.error('Error saving flashcards:', error)
