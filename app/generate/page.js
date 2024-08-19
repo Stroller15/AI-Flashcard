@@ -22,6 +22,7 @@ import { db } from "../../firebase"; // Adjust the import path as necessary
 import { useUser } from "@clerk/nextjs";
 import React from "react";
 import CardList from "../FlippableCard";
+import CustomAppBar from "../CustomAppBar";
 
 export default function Generate() {
   const { user } = useUser();
@@ -102,6 +103,7 @@ export default function Generate() {
 
   return (
     <Container width="80%">
+      <CustomAppBar />
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Generate Flashcards

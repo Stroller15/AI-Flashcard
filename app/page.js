@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import getStripe from "@/utils/get-stripe";
+import CustomAppBar from "./CustomAppBar";
 
 export default function Home() {
   const handleSubmit = async () => {
@@ -38,24 +39,7 @@ export default function Home() {
   };
   return (
     <Container maxWidth="lg">
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            Flashcard SaaS
-          </Typography>
-          <SignedOut>
-            <Button color="inherit" href="/sign-in">
-              Login
-            </Button>
-            <Button color="inherit" href="/sign-up">
-              Sign Up
-            </Button>
-          </SignedOut>
-          <SignedIn>
-            <UserButton signOutCallback={SignOutButton} />
-          </SignedIn>
-        </Toolbar>
-      </AppBar>
+      <CustomAppBar />
       <Box sx={{ textAlign: "center", my: 4 }}>
         <Typography variant="h2" component="h1" gutterBottom>
           Welcome to Flashcard SaaS

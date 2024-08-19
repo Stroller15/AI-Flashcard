@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { db } from "../../firebase";
 import CardList from "../FlippableCard";
+import CustomAppBar from "../CustomAppBar";
 
 export default function Flashcard() {
   const { user } = useUser();
@@ -48,6 +49,7 @@ export default function Flashcard() {
 
   return (
     <Container width="80%">
+      <CustomAppBar />
       <CardList cards={flashcards} />
     </Container>
   );
