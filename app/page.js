@@ -71,14 +71,27 @@ export default function Home() {
         >
           Get Started
         </Button>
-        <Button
-          variant="outlined"
-          color="primary"
-          sx={{ mt: 2 }}
-          href="https://medium.com/@billzhangsc/creating-a-flashcard-saas-with-openai-and-stripe-7896ddea1dbb"
-        >
-          Learn More
-        </Button>
+        <SignedIn>
+          <Button
+            variant="outlined"
+            color="primary"
+            sx={{ mt: 2 }}
+            href="/flashcards"
+          >
+            Your Saved FlashCards
+          </Button>
+        </SignedIn>
+        <SignedOut>
+          <Button
+            variant="outlined"
+            color="primary"
+            sx={{ mt: 2 }}
+            href="/sign-in"
+          >
+            Login for Saved Flashcards
+          </Button>
+        </SignedOut>
+
         <Box sx={{ my: 6 }}>
           <Typography variant="h4" component="h2" gutterBottom>
             Features
