@@ -8,9 +8,6 @@ import {
   Button,
   Typography,
   Box,
-  Grid,
-  Card,
-  CardContent,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -25,7 +22,7 @@ import CardList from "../FlippableCard";
 import CustomAppBar from "../CustomAppBar";
 
 export default function Generate() {
-  const { user } = useUser();
+  const { isLoaded, isSignedIn, user } = useUser();
   const [text, setText] = useState("");
   const [flashcards, setFlashcards] = useState([]);
   const [setName, setSetName] = useState("");
@@ -100,6 +97,10 @@ export default function Generate() {
       alert("An error occurred while saving flashcards. Please try again.");
     }
   };
+
+  if (!isLoaded || !isSignedIn) {
+    return <></>
+  }
 
   return (
     <Container width="80%" fixed bgcolor="#f2f6fc">

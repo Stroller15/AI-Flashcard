@@ -39,8 +39,12 @@ export default function Flashcard() {
     router.push(`/flashcard?id=${id}`);
   };
 
+  if (!isLoaded || !isSignedIn) {
+    return <></>
+  }
+
   return (
-    <Container maxWidth="md" fixed bgcolor="#f2f6fc">
+    <Container maxWidth="100%" fixed bgcolor="#f2f6fc">
       <CustomAppBar />
       <Grid container spacing={3} sx={{ mt: 4 }}>
         {flashcards.map((flashcard, index) => (

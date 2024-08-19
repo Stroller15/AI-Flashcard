@@ -4,21 +4,13 @@ import { useState, useEffect } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { useSearchParams } from "next/navigation";
 import { collection, doc, getDocs } from "firebase/firestore";
-import {
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardActionArea,
-  CardContent,
-  Box,
-} from "@mui/material";
+import { Container, Button } from "@mui/material";
 import { db } from "../../firebase";
 import CardList from "../FlippableCard";
 import CustomAppBar from "../CustomAppBar";
 
 export default function Flashcard() {
-  const { user } = useUser();
+  const { isLoaded, isSignedIn, user } = useUser();
   const [flashcards, setFlashcards] = useState([]);
   const [flipped, setFlipped] = useState({});
 
@@ -40,15 +32,13 @@ export default function Flashcard() {
     getFlashcard();
   }, [search, user]);
 
-  const handleCardClick = (id) => {
-    setFlipped((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
+
+  if (!isLoaded || !isSignedIn) {
+    return <></>
+  }
 
   return (
-    <Container width="80%" fixed bgcolor="#f2f6fc">
+    <Container maxWidth="100%" fixed bgcolor="#f2f6fc">
       <CustomAppBar />
       <CardList cards={flashcards} />
     </Container>

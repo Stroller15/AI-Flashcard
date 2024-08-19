@@ -4,12 +4,10 @@ import {
   Container,
   Box,
   Typography,
-  AppBar,
-  Toolbar,
   Button,
   Grid,
 } from "@mui/material";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import getStripe from "@/utils/get-stripe";
 import CustomAppBar from "./CustomAppBar";
 
@@ -47,24 +45,24 @@ export default function Home() {
         <Typography variant="h5" component="h2" gutterBottom>
           The easiest way to create flashcards from your text.
         </Typography>
-        <Button
-          variant="contained"
-          sx={{
-            mt: 2,
-            mr: 2,
-            backgroundColor: "#BC8F8F",
-            color: "#FFFFFF",
-            "&:hover": {
-              backgroundColor: "#A77D7D",
-            },
-          }}
-          href="/generate"
-        >
-          Get Started
-        </Button>
         <SignedIn>
           <Button
-            variant="outlined"
+            variant="contained"
+            sx={{
+              mt: 2,
+              mr: 2,
+              backgroundColor: "#BC8F8F",
+              color: "#FFFFFF",
+              "&:hover": {
+                backgroundColor: "#A77D7D",
+              },
+            }}
+            href="/generate"
+          >
+            Get Started
+          </Button>
+          <Button
+            variant="contained"
             sx={{
               mt: 2,
               mr: 2,
@@ -81,46 +79,67 @@ export default function Home() {
         </SignedIn>
         <SignedOut>
           <Button
-            variant="outlined"
-            color="primary"
-            sx={{ mt: 2 }}
+            variant="contained"
+            sx={{
+              mt: 2,
+              mr: 2,
+              backgroundColor: "#BC8F8F",
+              color: "#FFFFFF",
+              "&:hover": {
+                backgroundColor: "#A77D7D",
+              },
+            }}
             href="/sign-in"
           >
             Login for Saved Flashcards
           </Button>
-        </SignedOut>
-
-        <Box sx={{ my: 6 }}>
+          <Box sx={{ my: 6 }}>
           <Typography variant="h4" component="h2" gutterBottom>
             Features
           </Typography>
-          <Grid container spacing={4}>
-            {/* Feature items */}
-          </Grid>
-        </Box>
-        <Box sx={{ my: 6, textAlign: "center" }}>
-          <Typography variant="h4" component="h2" gutterBottom>
-            Pricing
-          </Typography>
           <Grid container spacing={4} justifyContent="center">
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{
-                mt: 5,
-                ml: 5,
-                backgroundColor: "#BC8F8F",
-                color: "#FFFFFF",
-                "&:hover": {
-                  backgroundColor: "#A77D7D",
-                },
-              }}
-              onClick={handleSubmit}
-            >
-              Subscribe to our Pro version
-            </Button>
+            <Grid item xs={12} md={4}>
+              <Typography variant="h6">Effortless Content Creation</Typography>
+              <Typography>{' '} Transform your notes into study material effortlessly. Just paste your text, and our system will convert it into ready-to-use flashcards.</Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography variant="h6">Intelligent Study Aids</Typography>
+              <Typography>{' '} Our AI optimizes your study sessions by generating flashcards that highlight key concepts, helping you retain information more effectively.</Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography variant="h6">Universal Access</Typography>
+              <Typography>{' '} Enjoy seamless studying across all your devices, whenever and wherever you need. Your flashcards are always within reach, ensuring you can study anytime.</Typography>
+            </Grid>
           </Grid>
         </Box>
+          <Box sx={{ my: 6, textAlign: "center" }}>
+            <Typography variant="h4" component="h2" gutterBottom>
+              Pricing
+            </Typography>
+            <Grid container spacing={4} justifyContent="center">
+              <Grid item xs={12} md={4}>
+                <Box sx={{p:3, border: '1px solid', borderColor: 'greay.300', borderRadius:2,}}>
+                  <Typography variant="h5" gutterBottom>Pro</Typography>
+                  <Typography variant="h6" gutterBottom>$10 / month</Typography>
+                  <Typography>{' '} Access to Pro flashcard features and storage.</Typography>
+                  <Button variant="contained" sx={{
+                    mt: 2,
+                    mr: 2,
+                    backgroundColor: "#BC8F8F",
+                    color: "#FFFFFF",
+                    "&:hover": {
+                      backgroundColor: "#A77D7D",
+                    },
+                    }}
+                    onClick={handleSubmit}
+                  >
+                    Choose Pro
+                  </Button>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+        </SignedOut>
       </Box>
     </Container>
   );

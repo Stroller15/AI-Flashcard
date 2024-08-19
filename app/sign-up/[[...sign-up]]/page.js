@@ -20,7 +20,15 @@ export default function SignUpPage() {
 
   return (
     <Container>
-      <AppBar position="static" sx={{ backgroundColor: "#3f51b5" }}>
+      <AppBar
+        position="static"
+        sx={{
+          backgroundImage: `url('/images/brown_image.jpg')`, // Replace with the path relative to the public directory
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <Toolbar>
           <Typography
             variant="h6"
