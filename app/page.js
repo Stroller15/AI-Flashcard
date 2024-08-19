@@ -38,7 +38,7 @@ export default function Home() {
     );
   };
   return (
-    <Container maxWidth="100%">
+    <Container maxWidth="100%" fixed bgcolor="#f2f6fc">
       <CustomAppBar />
       <Box sx={{ textAlign: "center", my: 4 }}>
         <Typography variant="h2" component="h1" gutterBottom>

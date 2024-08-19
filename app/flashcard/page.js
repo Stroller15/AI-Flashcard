@@ -48,7 +48,7 @@ export default function Flashcard() {
   };
 
   return (
-    <Container width="80%">
+    <Container width="80%" fixed bgcolor="#f2f6fc">
       <CustomAppBar />
       <CardList cards={flashcards} />
     </Container>

@@ -40,7 +40,7 @@ export default function Flashcard() {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" fixed bgcolor="#f2f6fc">
       <CustomAppBar />
       <Grid container spacing={3} sx={{ mt: 4 }}>
         {flashcards.map((flashcard, index) => (

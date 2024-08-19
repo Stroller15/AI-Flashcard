@@ -102,7 +102,7 @@ export default function Generate() {
   };
 
   return (
-    <Container width="80%">
+    <Container width="80%" fixed bgcolor="#f2f6fc">
       <CustomAppBar />
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
@@ -120,7 +120,15 @@ export default function Generate() {
         />
         <Button
           variant="contained"
-          color="primary"
+          sx={{
+            mt: 2,
+            mr: 2,
+            backgroundColor: "#BC8F8F",
+            color: "#FFFFFF",
+            "&:hover": {
+              backgroundColor: "#A77D7D",
+            },
+          }}
           onClick={handleSubmit}
           fullWidth
         >
@@ -141,7 +149,15 @@ export default function Generate() {
         <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
           <Button
             variant="contained"
-            color="primary"
+            sx={{
+              mt: 2,
+              mr: 2,
+              backgroundColor: "#BC8F8F",
+              color: "#FFFFFF",
+              "&:hover": {
+                backgroundColor: "#A77D7D",
+              },
+            }}
             onClick={handleOpenDialog}
           >
             Save Flashcards
@@ -167,7 +183,18 @@ export default function Generate() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>Cancel</Button>
-          <Button onClick={saveFlashcards} color="primary">
+          <Button
+            onClick={saveFlashcards}
+            sx={{
+              mt: 2,
+              mr: 2,
+              backgroundColor: "#BC8F8F",
+              color: "#FFFFFF",
+              "&:hover": {
+                backgroundColor: "#A77D7D",
+              },
+            }}
+          >
             Save
           </Button>
         </DialogActions>

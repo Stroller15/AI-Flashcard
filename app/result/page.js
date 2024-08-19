@@ -57,7 +57,12 @@ export default function ResultPage() {
   }
 
   return (
-    <Container maxWidth="sm" sx={{ textAlign: "center", mt: 4 }}>
+    <Container
+      maxWidth="sm"
+      fixed
+      bgcolor="#f2f6fc"
+      sx={{ textAlign: "center", mt: 4 }}
+    >
       {session.payment_status === "paid" ? (
         <>
           <Typography variant="h4">Thank you for your purchase!</Typography>
