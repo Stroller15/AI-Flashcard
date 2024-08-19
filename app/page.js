@@ -38,7 +38,7 @@ export default function Home() {
     );
   };
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="100%">
       <CustomAppBar />
       <Box sx={{ textAlign: "center", my: 4 }}>
         <Typography variant="h2" component="h1" gutterBottom>
@@ -49,8 +49,15 @@ export default function Home() {
         </Typography>
         <Button
           variant="contained"
-          color="primary"
-          sx={{ mt: 2, mr: 2 }}
+          sx={{
+            mt: 2,
+            mr: 2,
+            backgroundColor: "#BC8F8F",
+            color: "#FFFFFF",
+            "&:hover": {
+              backgroundColor: "#A77D7D",
+            },
+          }}
           href="/generate"
         >
           Get Started
@@ -58,8 +65,15 @@ export default function Home() {
         <SignedIn>
           <Button
             variant="outlined"
-            color="primary"
-            sx={{ mt: 2 }}
+            sx={{
+              mt: 2,
+              mr: 2,
+              backgroundColor: "#BC8F8F",
+              color: "#FFFFFF",
+              "&:hover": {
+                backgroundColor: "#A77D7D",
+              },
+            }}
             href="/flashcards"
           >
             Your Saved FlashCards
@@ -92,7 +106,15 @@ export default function Home() {
             <Button
               variant="contained"
               color="primary"
-              sx={{ mt: 5, ml: 5 }}
+              sx={{
+                mt: 5,
+                ml: 5,
+                backgroundColor: "#BC8F8F",
+                color: "#FFFFFF",
+                "&:hover": {
+                  backgroundColor: "#A77D7D",
+                },
+              }}
               onClick={handleSubmit}
             >
               Subscribe to our Pro version
