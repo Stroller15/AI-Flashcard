@@ -36,11 +36,11 @@ export default function Home() {
     );
   };
   return (
-    <Container maxWidth="100%" fixed bgcolor="#f2f6fc">
+    <Container maxWidth="100%" fixed bgcolor="#f2f6fc" sx={{height: "100vh"}}>
       <CustomAppBar />
       <Box sx={{ textAlign: "center", my: 4 }}>
         <Typography variant="h2" component="h1" gutterBottom>
-          Welcome to Flashcard SaaS
+          Welcome to FlashMind AI
         </Typography>
         <Typography variant="h5" component="h2" gutterBottom>
           The easiest way to create flashcards from your text.
@@ -120,7 +120,7 @@ export default function Home() {
               <Grid item xs={12} md={4}>
                 <Box sx={{p:3, border: '1px solid', borderColor: 'greay.300', borderRadius:2,}}>
                   <Typography variant="h5" gutterBottom>Pro</Typography>
-                  <Typography variant="h6" gutterBottom>$10 / month</Typography>
+                  <Typography variant="h6" gutterBottom>$5 / month</Typography>
                   <Typography>{' '} Access to Pro flashcard features and storage.</Typography>
                   <Button variant="contained" sx={{
                     mt: 2,

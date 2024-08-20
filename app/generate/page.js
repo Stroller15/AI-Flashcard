@@ -103,7 +103,7 @@ export default function Generate() {
   }
 
   return (
-    <Container width="80%" fixed bgcolor="#f2f6fc">
+    <Container width="80%" fixed bgcolor="#f2f6fc" sx={{height: "100vh"}}>
       <CustomAppBar />
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>

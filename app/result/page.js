@@ -37,7 +37,7 @@ export default function ResultPage() {
 
   if (loading) {
     return (
-      <Container maxWidth="sm" sx={{ textAlign: "center", mt: 4 }}>
+      <Container maxWidth="sm" sx={{ textAlign: "center", mt: 4, height: "100vh" }}>
         <CircularProgress />
         <Typography variant="h6" sx={{ mt: 2 }}>
           Loading...
@@ -48,7 +48,7 @@ export default function ResultPage() {
 
   if (error) {
     return (
-      <Container maxWidth="sm" sx={{ textAlign: "center", mt: 4 }}>
+      <Container maxWidth="sm" sx={{ textAlign: "center", mt: 4, height: "100vh" }}>
         <Typography variant="h6" color="error">
           {error}
         </Typography>
@@ -61,7 +61,7 @@ export default function ResultPage() {
       maxWidth="sm"
       fixed
       bgcolor="#f2f6fc"
-      sx={{ textAlign: "center", mt: 4 }}
+      sx={{ textAlign: "center", mt: 4, height: "100vh" }}
     >
       {session.payment_status === "paid" ? (
         <>

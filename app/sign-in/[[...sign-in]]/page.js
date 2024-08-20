@@ -11,6 +11,7 @@ import {
 import { SignIn } from "@clerk/nextjs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function SignInPage() {
     router.push("/");
   };
   return (
-    <Container>
+    <Container sx={{height: "100vh"}}>
       <AppBar
         position="static"
         sx={{
@@ -29,12 +30,13 @@ export default function SignInPage() {
         }}
       >
         <Toolbar>
+          <Image src="/images/logo.webp" width={50} height={50} alt="FlashMind AI"></Image>
           <Typography
             variant="h6"
-            sx={{ flexGrow: 1, cursor: "pointer" }}
+            sx={{ flexGrow: 1, cursor: "pointer", ml: 2 }}
             onClick={handleClick}
           >
-            Flashcard SaaS
+            FlashMind AI
           </Typography>
           <Button color="inherit">
             <Link href="/sign-up" passHref>

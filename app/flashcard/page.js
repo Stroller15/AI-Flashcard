@@ -38,7 +38,7 @@ export default function Flashcard() {
   }
 
   return (
-    <Container maxWidth="100%" fixed bgcolor="#f2f6fc">
+    <Container maxWidth="100%" fixed bgcolor="#f2f6fc" sx={{height: "100vh"}}>
       <CustomAppBar />
       <CardList cards={flashcards} />
     </Container>

@@ -5,7 +5,7 @@ import { ClerkProvider  } from '@clerk/nextjs'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Flashcard SaaS",
+  title: "FlashMind AI",
   description: "Easiest way to create Flashcards from your text",
 };
 
