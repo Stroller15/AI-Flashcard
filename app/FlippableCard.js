@@ -34,11 +34,14 @@ const FlippableCard = ({ data }) => {
 // Styled component for the card container
 const StyledCard = styled(Card)({
   cursor: "pointer",
-  width: "300px",
+  width: "95%",
   height: "200px",
   perspective: "1000px",
-  margin: "16px",
+  margin: "1%",
   position: "relative",
+  background: "#FAF0E6",
+  overflow: "auto",
+  borderRadius: "5px",
 });
 
 // Styled component for the inner card that handles the flip

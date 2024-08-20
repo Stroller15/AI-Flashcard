@@ -14,6 +14,7 @@ import {
   DialogContentText,
   DialogActions,
 } from "@mui/material";
+import Image from "next/image";
 import { collection, doc, getDoc, writeBatch } from "firebase/firestore";
 import { db } from "../../firebase"; // Adjust the import path as necessary
 import { useUser } from "@clerk/nextjs";
@@ -27,10 +28,12 @@ export default function Generate() {
   const [flashcards, setFlashcards] = useState([]);
   const [setName, setSetName] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async () => {
     // We'll implement the API call here
+    setIsLoading(true);
     if (!text.trim()) {
       alert("Please enter some text to generate flashcards.");
       return;
@@ -48,6 +51,7 @@ export default function Generate() {
 
       const data = await response.json();
       setFlashcards(data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error generating flashcards:", error);
       alert("An error occurred while generating flashcards. Please try again.");
@@ -99,11 +103,19 @@ export default function Generate() {
   };
 
   if (!isLoaded || !isSignedIn) {
-    return <></>
+    return <></>;
   }
 
   return (
-    <Container width="80%" fixed bgcolor="#f2f6fc" sx={{height: "100vh"}}>
+    <Container
+      width="100%"
+      fixed
+      sx={{
+        height: "100vh",
+        backgroundColor: "#f2f6fc",
+        overflow: "auto",
+      }}
+    >
       <CustomAppBar />
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
@@ -135,6 +147,26 @@ export default function Generate() {
         >
           Generate Flashcards
         </Button>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          {isLoading && (
+            <>
+              <Typography variant="h5" component="h2" gutterBottom>
+                Generating your flashcards..
+              </Typography>
+              <Image
+                src="/images/loading.gif"
+                alt="Loading..."
+                width={100}
+                height={100}
+              />
+            </>
+          )}
+        </Box>
       </Box>
 
       {flashcards.length > 0 && (
